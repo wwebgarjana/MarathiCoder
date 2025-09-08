@@ -1,0 +1,80 @@
+<!-- 
+
+<div class="assignment-container">
+  <h2>📚 Available Assignments</h2>
+
+  <div class="assignment-card" *ngFor="let assignment of assignments">
+    <p><strong>Title:</strong> {{ assignment.topic }}</p>
+    <p><strong>Description:</strong> {{ assignment.description }}</p>
+    <p><strong>Due Date:</strong> {{ assignment.dueDate | date }}</p>
+
+    <!-- Uploaded File (if present on the assignment itself) -->
+    <!-- <div *ngIf="assignment.fileName">
+      <p><strong>Uploaded File:</strong>
+        <a [href]="'http://localhost:8082/api/assignments/download/' + assignment.id" target="_blank" rel="noopener">
+          {{ assignment.fileName }}
+        </a>
+      </p>
+    </div> -->
+
+    <!-- File Upload & Submit: shown only when not submitted for this assignment -->
+    <!-- <div class="upload-section" *ngIf="!isSubmitted(assignment.topic)">
+      <input type="file" (change)="onFileChange($event, assignment.topic)" />
+      <button (click)="submitAssignmentFile(assignment.topic)">Submit</button>
+    </div> -->
+
+    <!-- Submitted badge (shown after submit) -->
+    <!-- <div class="submitted-badge" *ngIf="isSubmitted(assignment.topic)">
+      <span>✅ Submitted</span>
+      <a *ngIf="submittedFileMap[assignment.topic]" 
+         [href]="submittedFileMap[assignment.topic]" 
+         target="_blank" rel="noopener" class="view-link">
+        View submitted file
+      </a>
+    </div>
+  </div> -->
+<!-- </div> --> 
+
+<div class="assignments-container">
+  <h2>📘 Available Assignments</h2>
+
+  <!-- Loading / Error -->
+  <div *ngIf="loading">⏳ Loading assignments...</div>
+  <div *ngIf="errorMsg" class="error">{{ errorMsg }}</div>
+
+  <!-- Assignment Cards -->
+  <div class="assignment-card" *ngFor="let assignment of assignments">
+    <p><strong>Title:</strong> {{ assignment.topic }}</p>
+    <p><strong>Description:</strong> {{ assignment.description }}</p>
+    <p><strong>Due Date:</strong> {{ assignment.dueDate | date }}</p>
+
+    <!-- Trainer uploaded file -->
+    <p *ngIf="assignment.downloadUrl">
+      <strong>Trainer File:</strong>
+      <button (click)="downloadFile(assignment.downloadUrl, assignment.fileName || 'trainer_file_' + assignment.id)">
+        View file
+      </button>
+    </p>
+
+    <!-- Student file upload -->
+    <div *ngIf="!isSubmitted(assignment.id)">
+      <input type="file" (change)="onFileChange($event, assignment.id)">
+      <button (click)="submitAssignmentFile(assignment.id)">Submit</button>
+    </div>
+
+    <!-- Submitted badge and download -->
+    <div *ngIf="isSubmitted(assignment.id)">
+      ✅ Submitted
+      <button *ngIf="submittedFileMap[assignment.id]"
+              (click)="downloadFile(submittedFileMap[assignment.id].url, submittedFileMap[assignment.id].fileName)">
+        View your submission
+      </button>
+    </div>
+  </div>
+
+  <!-- No assignments -->
+  <div *ngIf="!loading && assignments.length === 0 && !errorMsg">
+    ✅ No assignments available
+  </div>
+</div>
+

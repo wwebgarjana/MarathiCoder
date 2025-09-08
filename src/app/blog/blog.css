@@ -1,0 +1,153 @@
+.blog-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.blog-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+  border-bottom: 2px solid #ffb400;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.blog-card {
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 15px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.blog-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.blog-card h4 {
+  margin-top: 15px;
+  font-size: 18px;
+  color: #0077cc;
+}
+
+.blog-card .date {
+  font-size: 13px;
+  color: #999;
+  margin: 5px 0;
+}
+
+.blog-card p {
+  font-size: 14px;
+  color: #444;
+}
+
+
+.upcoming-blogs {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f0f4f8;
+  border-top: 2px solid #ddd;
+  text-align: center;
+}
+
+.upcoming-blogs h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.upcoming-blogs marquee {
+  font-size: 1.1rem;
+  color: #444;
+  font-weight: 500;
+}
+
+
+
+
+
+
+
+.four-m-section {
+  background-color: #f5faff;
+  padding: 80px 20px;
+  text-align: center;
+  color: #003366;
+}
+
+.four-m-section h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #002244;
+}
+
+.four-m-section h2 span {
+  display: block;
+  font-size: 22px;
+  font-weight: 600;
+  color: #007bff;
+  margin-top: 8px;
+}
+
+.four-m-section .description {
+  font-size: 18px;
+  max-width: 800px;
+  margin: 0 auto 50px auto;
+  color: #333;
+}
+
+.mentor-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.mentor-cards .card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  width: 230px;
+  box-shadow: 0 4px 10px rgba(0, 85, 179, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.mentor-cards .card:hover {
+  transform: translateY(-10px);
+  background-color: #007bff;
+  color: white;
+}
+
+.mentor-cards .icon {
+  font-size: 2.5rem;
+  color: #007bff;
+  margin-bottom: 15px;
+  transition: color 0.3s ease-in-out;
+}
+
+.mentor-cards .card:hover .icon {
+  color: #ffffff;
+}
+
+.mentor-cards h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.mentor-cards p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}

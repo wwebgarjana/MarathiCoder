@@ -1,0 +1,29 @@
+
+
+<div class="assignments-upload-form">
+  <h2>Upload Assignment</h2>
+
+  <form (ngSubmit)="submitAssignment()" [formGroup]="assignmentForm">
+    <!-- Topic -->
+    <label>Topic</label>
+    <input type="text" formControlName="topic" placeholder="Assignment Topic" required /><br />
+
+    <!-- Description -->
+    <label>Description</label>
+    <textarea formControlName="description" placeholder="Description" required></textarea><br />
+
+    <!-- Due Date -->
+    <label>Due Date</label>
+    <input type="date" formControlName="dueDate" required /><br />
+
+    <!-- File Input -->
+    <label>File</label>
+    <input type="file" (change)="onFileChange($event)" #fileInput required /><br />
+
+    <!-- Upload Button -->
+    <button type="submit">Upload Assignment</button>
+  </form>
+</div>
+
+<hr />
+

@@ -1,0 +1,132 @@
+
+
+<!-- <div class="card-container">
+  <h2>Attendance</h2>
+
+  <div class="card attendance-card">
+    <label for="batch">Select Batch:</label>
+    <select id="batch" [(ngModel)]="selectedBatch" (change)="onBatchOrDateChange()">
+      <option value="" disabled>Select Batch</option>
+      <option *ngFor="let batch of batches" [value]="batch">{{ batch }}</option>
+    </select>
+
+    <label for="date">Select Date:</label>
+    <input type="date" id="date" [(ngModel)]="selectedDate" (change)="onBatchOrDateChange()"/>
+
+    <h3 *ngIf="students.length > 0">Student List:</h3> -->
+
+    <!-- Show input only if attendance is NOT already done -->
+    <!-- <div class="student-list" *ngIf="students.length > 0 && !attendanceAlreadyDone">
+      <div class="student" *ngFor="let student of students">
+        <span>{{ student.studentId }} - {{ student.studentName }}</span>
+        <label>
+          <input type="radio" [name]="student.studentId" value="present"
+                 [(ngModel)]="attendanceMap[student.studentId]" /> Present
+        </label>
+        <label>
+          <input type="radio" [name]="student.studentId" value="absent"
+                 [(ngModel)]="attendanceMap[student.studentId]" /> Absent
+        </label>
+      </div>
+    </div> -->
+
+    <!-- Submit button only if not already done -->
+    <!-- <button class="submit-btn"
+            (click)="markAttendance()"
+            [disabled]="students.length === 0 || attendanceAlreadyDone">
+      Submit Attendance
+    </button> -->
+
+    <!-- Show Submitted Attendance always if already done -->
+    <!-- <div class="submitted-attendance" *ngIf="submittedAttendance.length > 0">
+      <h3>Submitted Attendance:</h3>
+      <p *ngIf="attendanceAlreadyDone" style="color: red; font-weight: bold;">
+        Attendance is already done for today!
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let att of submittedAttendance">
+            <td>{{ att.studentId }}</td>
+            <td>{{ att.studentName }}</td>
+            <td [ngStyle]="{'color': att.status ? 'green' : 'red'}">
+              {{ att.status ? 'Present' : 'Absent' }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div> -->
+
+
+
+<div class="card-container">
+  <h2>Attendance</h2>
+
+  <div class="card attendance-card">
+    <label for="batch">Select Batch:</label>
+    <select id="batch" [(ngModel)]="selectedBatch" (change)="onBatchOrDateChange()">
+      <option value="" disabled>Select Batch</option>
+      <option *ngFor="let batch of batches" [value]="batch">{{ batch }}</option>
+    </select>
+
+    <label for="date">Select Date:</label>
+    <input type="date" id="date" [(ngModel)]="selectedDate" (change)="onBatchOrDateChange()"/>
+
+    <!-- Student List only if NOT already marked -->
+    <h3 *ngIf="students.length > 0 && !attendanceAlreadyDone">Student List:</h3>
+    <div class="student-list" *ngIf="students.length > 0 && !attendanceAlreadyDone">
+      <div class="student" *ngFor="let student of students">
+        <span>{{ student.studentId }} - {{ student.studentName }}</span>
+        <label>
+          <input type="radio" [name]="student.studentId" value="present"
+                 [(ngModel)]="attendanceMap[student.studentId]" /> Present
+        </label>
+        <label>
+          <input type="radio" [name]="student.studentId" value="absent"
+                 [(ngModel)]="attendanceMap[student.studentId]" /> Absent
+        </label>
+      </div>
+    </div>
+
+    <!-- Submit button only if not already done -->
+    <button class="submit-btn"
+            (click)="markAttendance()"
+            [disabled]="students.length === 0 || attendanceAlreadyDone">
+      Submit Attendance
+    </button>
+
+    <!-- Show Submitted Attendance if already done -->
+    <div class="submitted-attendance" *ngIf="submittedAttendance.length > 0">
+      <h3>Submitted Attendance:</h3>
+      <p *ngIf="attendanceAlreadyDone" style="color: red; font-weight: bold;">
+        Attendance is already done for today!
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let att of submittedAttendance">
+            <td>{{ att.studentId }}</td>
+            <td>{{ att.studentName }}</td>
+            <td [ngStyle]="{'color': att.status === 'present' ? 'green' : 'red'}">
+              {{ att.status === 'present' ? 'Present' : 'Absent' }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
